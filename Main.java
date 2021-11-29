@@ -1,11 +1,14 @@
 import java.util.Scanner;
 class Main {
   public static void main(String[] args) {
- 
+    double finalSalary;
     Employee emp1 = new Employee("Ebenezer", "Oyenuga", 10000);
 
-    
-    System.out.println(emp1.getFirstName() + " " + emp1.getLastName() + "Yearly Salary is " + emp1.getMonthlySalary()*12);
+      
+    System.out.println(emp1.getFirstName() + " " + emp1.getLastName() + " Yearly Salary is " + emp1.getMonthlySalary()*12);
+    finalSalary = (emp1.calculatePercentageRaise()*12) + emp1.getMonthlySalary() * 12;
+
+    System.out.println(emp1.getFirstName() + " " + emp1.getLastName() + "Yearly Salary after the 10% raise is " + finalSalary);
 
 Employee emp2 =new Employee("", "", 0);
 
@@ -13,22 +16,27 @@ Employee emp2 =new Employee("", "", 0);
     emp2.setLastName("Adekola");
 
     Scanner scan = new Scanner(System.in);
+    System.out.print("Kindly input " + emp2.getLastName() + ", " + emp2.getFirstName() + " monthly salary");
     int mSalary = scan.nextInt();
     emp2.setMonthlySalary(mSalary);
     System.out.println(emp2.getFirstName() + " " + emp2.getLastName() + "Yearly Salary is " + emp2.getMonthlySalary()*12);
+
+     finalSalary = (emp2.calculatePercentageRaise()*12) + emp2.getMonthlySalary() * 12;
+
+     System.out.println(emp2.getFirstName() + " " + emp2.getLastName() + "Yearly Salary after the 10% raise is " + finalSalary);
   }
 }
-q
+
 class Employee{
   private String firstName;
   private String lastName;
   private int monthlySalary;
-  public String department;
+  
   
   Employee(String fName, String lName, int mSalary){
-    this.firstName = fName;
-    this.lastName = lName.toUpperCase();
-    this.monthlySalary = mSalary;
+    firstName = fName;
+    lastName = lName.toUpperCase();
+    monthlySalary = mSalary;
   }
 
   public void setFirstName(String fnam){
@@ -55,8 +63,13 @@ class Employee{
       monthlySalary = msal;
     }
   }
+
   public int getMonthlySalary(){
     return monthlySalary;
+  }
+
+  public float calculatePercentageRaise(){
+    return monthlySalary * 0.1f;
   }
 
 
